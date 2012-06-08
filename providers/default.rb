@@ -1,7 +1,7 @@
 action :install do
   tarball_name   = new_resource.url.split("/").last
   unzip_dir_name = tarball_name.split(/(.tar.gz|.zip)/)[0]
-  app_dir        = new_resource.name
+  app_dir        = new_resource.dir
   app_dir_name   = ::File.basename(app_dir)
   parent_dir     = ::File.expand_path("..", app_dir)
 
@@ -41,7 +41,7 @@ action :install do
       end
     end
 
-    ::FileUtils.chown new_resource.user, new_resource.group, "{tmpdir}/#{app_dir_name}"
+    ::FileUtils.chown new_resource.user, new_resource.group, "#{tmpdir}/#{unzip_dir_name}"
     cmd = Chef::ShellOut.new(
                        %Q[ mv "#{tmpdir}/#{unzip_dir_name}" "#{app_dir}" ]
                              ).run_command
