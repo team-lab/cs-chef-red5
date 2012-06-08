@@ -1,9 +1,9 @@
 # encoding: utf-8
 $:.unshift File.expand_path("../", __FILE__)
 
-require 'chattin_api/version'
-
-VERSION = File.open("VERSION") { |f| f.read }
+project_root = File.expand_path("..", __FILE__)
+version_file = File.join(project_root, "VERSION")
+VERSION = File.open(version_file) { |f| f.read }
 
 # Inspired by `require_clean_work_tree'
 # http://stackoverflow.com/questions/3878624

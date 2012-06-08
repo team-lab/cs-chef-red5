@@ -1,9 +1,13 @@
+project_root = File.expand_path("..", __FILE__)
+version_file = File.join(project_root, "VERSION")
+
+
 maintainer        "Charles Strahan"
 maintainer_email  "charles.c.strahan@gmail.com"
 license           "MIT"
 description       "Installs Red5"
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           File.open("VERSION") { |f| f.read }
+version File.open(version_file) { |f| f.read }
 
 recipe "red5", "Installs Red5"
 
