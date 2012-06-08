@@ -22,8 +22,6 @@ TODO
 
 ## License and Author
 
-http://trac.red5.org/downloads/0_9/red5-0.9.1.tar.gz
-
 Contributors:: https://github.com/cstrahan/chef-red5/contributors
 
 Licensed under the MIT License.
