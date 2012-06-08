@@ -1,7 +1,7 @@
 action :install do
   tarball_name   = new_resource.url.split("/").last
   unzip_dir_name = tarball_name.split(/(.tar.gz|.zip)/)[0]
-  app_dir        = new_resource.dir
+  app_dir        = new_resource.name
   app_dir_name   = ::File.basename(app_dir)
   parent_dir     = ::File.expand_path("..", app_dir)
 
