@@ -1,6 +1,5 @@
 action :install do
   tarball_name   = new_resource.url.split("/").last
-  unzip_dir_name = tarball_name.split(/(.tar.gz|.zip)/)[0]
   app_dir        = new_resource.dir
   app_dir_name   = ::File.basename(app_dir)
   parent_dir     = ::File.expand_path("..", app_dir)
@@ -40,6 +39,8 @@ action :install do
         Chef::Application.fatal!("Failed to extract file #{tarball_name}!")
       end
     end
+
+    unzip_dir_name = Dir.entries(tmpdir).detect{|f|::File.directory?(::File.join(tmpdir,f)) and f!= "."  and f!= ".."}
 
     ::FileUtils.chown new_resource.user, new_resource.group, "#{tmpdir}/#{unzip_dir_name}"
     cmd = Chef::ShellOut.new(
