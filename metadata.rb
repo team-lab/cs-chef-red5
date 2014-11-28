@@ -1,7 +1,7 @@
 project_root = File.expand_path("..", __FILE__)
 version_file = File.join(project_root, "VERSION")
 
-
+name              "red5"
 maintainer        "Charles Strahan"
 maintainer_email  "charles.c.strahan@gmail.com"
 license           "MIT"
